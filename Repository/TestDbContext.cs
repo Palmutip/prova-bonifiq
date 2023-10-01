@@ -19,6 +19,11 @@ namespace ProvaPub.Repository
 
 			modelBuilder.Entity<Customer>().HasData(getCustomerSeed());
 			modelBuilder.Entity<Product>().HasData(getProductSeed());
+
+			modelBuilder.Entity<Order>()
+				.HasOne(o => o.Customer)
+				.WithMany(c => c.Orders)
+				.HasForeignKey(o => o.CustomerId);
 		}
 
 		private Customer[] getCustomerSeed()

@@ -1,21 +1,30 @@
-﻿using ProvaPub.Models;
+﻿using ProvaPub.Commom;
+using ProvaPub.Interfaces;
+using ProvaPub.Models;
 using ProvaPub.Repository;
 
 namespace ProvaPub.Services
 {
-	public class ProductService
-	{
-		TestDbContext _ctx;
+    /// <summary>
+    /// Classe para os dados e métodos da tabela 'Products'
+    /// </summary>
+    public class ProductService : IProductService
+    {
+        TestDbContext _ctx;
 
-		public ProductService(TestDbContext ctx)
-		{
-			_ctx = ctx;
-		}
+        public ProductService(TestDbContext ctx)
+        {
+            _ctx = ctx;
+        }
 
-		public ProductList  ListProducts(int page)
-		{
-			return new ProductList() {  HasNext=false, TotalCount =10, Products = _ctx.Products.ToList() };
-		}
-
-	}
+        /// <summary>
+        /// Retorna uma lista de produtos com dados paginados
+        /// </summary>
+        /// <param name="page">Numero da página desejada. Se nao passar, será considerado 0</param>
+        /// <returns>Retorna os dados da tabela 'Products' de forma paginada</returns>
+        public Paginacao<Product> ListProducts(int page)
+        {
+            return new PaginacaoService<Product>(_ctx.Products).Paginate(page);
+        }
+    }
 }
