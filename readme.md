@@ -14,7 +14,10 @@ Na Parte2Controller, foram feitas as seguintes melhorias:
 - Com a nova classe de Paginação, as classes CustomerList e ProductList foram descartadas.
 
 ## Parte 3 - Melhoria na Arquitetura
-Na Parte3Controller, realizei uma melhoria na arquitetura para garantir que o princípio Open-Closed seja respeitado. Foi criada uma interface IPaymentMethod para enumerar todas as classes que herdam dessa interface. Através da propridade 'Name' com valor fixo para cada forma de pagamento, é possivel alterar o comportamento individualmente dentro da classe de cada forma de pagamento.
+Na Parte3Controller, realizei uma melhoria na arquitetura para garantir que o princípio Open-Closed seja respeitado. 
+ - Foi criada uma interface IPaymentMethod para enumerar todas as classes que herdam dessa interface. Através da propridade 'Name' com valor fixo para cada forma de pagamento.
+ - Foi alterado o retorno da Controller para uma Task<IActionResult>, viabilizando o retorno de exceções
+
 
 ## Parte 4 - Testes Unitários
 Na Parte4Controller, criei testes unitários abrangentes para o método CanPurchase da classe CustomerService. Isso garante que as regras de negócio sejam testadas e que o código esteja funcionando conforme o esperado. Foi utilizado o framework de testes xUnit.
