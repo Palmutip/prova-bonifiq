@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Castle.Core.Resource;
+﻿using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore;
 using ProvaPub.Commom;
 using ProvaPub.Interfaces;

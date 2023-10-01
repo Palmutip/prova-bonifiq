@@ -8,7 +8,7 @@ namespace ProvaPub.Commom
     /// Classe responsável por realizar a paginação dos registros em lista
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PaginacaoService<T> //: IPaginacaoService<T>
+    public class PaginacaoService<T> 
     {
         private readonly IQueryable<T> _queryable;
 

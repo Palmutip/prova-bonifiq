@@ -14,9 +14,6 @@ builder.Services.AddControllers();
 //Faz a injeção de dependência
 NativeInjector.RegisterServices(builder.Services);
 
-// Registre o AutoMapper
-builder.Services.AddAutoMapper(typeof(Automap));
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

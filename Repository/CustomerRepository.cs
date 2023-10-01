@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProvaPub.Interfaces;
 using ProvaPub.Models;
+using System.Linq.Expressions;
 
 namespace ProvaPub.Repository
 {
@@ -15,6 +16,11 @@ namespace ProvaPub.Repository
         public IQueryable<Customer> GetAll()
         {
             return _ctx.Customers;
+        }
+
+        public async Task<IEnumerable<Customer>> GetMany(Expression<Func<Customer, bool>> expression)
+        {
+            return await _ctx.Customers.Where(expression).ToListAsync();
         }
     }
 }

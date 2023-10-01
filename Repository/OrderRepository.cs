@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.Core.Resource;
+using Microsoft.EntityFrameworkCore;
 using ProvaPub.Interfaces;
 using ProvaPub.Models;
+using System.Linq.Expressions;
 
 namespace ProvaPub.Repository
 {
@@ -16,5 +18,11 @@ namespace ProvaPub.Repository
         {
             return _ctx.Orders;
         }
+
+        public async Task<IEnumerable<Order>> GetMany(Expression<Func<Order, bool>> expression)
+        {
+            return await _ctx.Orders.Where(expression).ToListAsync();
+        }
+
     }
 }
